@@ -8,7 +8,7 @@
 #include "CameraViewerActor.generated.h"
 
 UCLASS()
-class PLUGINEXAMPLE_API ACameraViewerActor : public AActor
+class EXAMPLEPLUGIN_API ACameraViewerActor : public AActor
 {
 	GENERATED_BODY()
 	
