@@ -6,6 +6,10 @@
 #include "GameFramework/Actor.h"
 #include "FacePlayerActor.generated.h"
 
+/*
+Spawn a cube that will always face the player
+You can change the mesh
+*/
 UCLASS()
 class EXAMPLEPLUGIN_API AFacePlayerActor : public AActor
 {

@@ -9,6 +9,10 @@
 #include "HoverComponent.generated.h"
 
 
+/*
+An Hover Component
+For more information, see https://www.youtube.com/watch?v=Vtfxg6VOolQ
+*/
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class EXAMPLEPLUGIN_API UHoverComponent : public USceneComponent
 {
