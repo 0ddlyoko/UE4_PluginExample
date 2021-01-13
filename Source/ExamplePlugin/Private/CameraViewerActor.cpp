@@ -45,18 +45,22 @@ void ACameraViewerActor::OnConstruction(const FTransform& Transform)
 	for (int i = 0; i < CameraNumber; i++)
 	{
 		float CameraDegree = (360.0f / CameraNumber) * i;
-		float CameraSin = FMath::Sin(CameraDegree);
-		float CameraCos = FMath::Cos(CameraDegree);
+		float CameraSin = FMath::Sin(FMath::DegreesToRadians(CameraDegree));
+		float CameraCos = FMath::Cos(FMath::DegreesToRadians(CameraDegree));
 		FVector CameraTranslation = FVector(CameraSin * Width, CameraCos * Width, Height);
 		FRotator CameraRotation = UKismetMathLibrary::FindLookAtRotation(CameraTranslation, FVector::ZeroVector);
 		FVector CameraScale = FVector::OneVector;
 		FTransform CameraTransform = FTransform(CameraRotation, CameraTranslation, CameraScale);
-		UCameraComponent* NewCameraComponent = CreateDefaultSubobject<UCameraComponent>(*FString("Camera " + (i + 1)));
-		//NewCameraComponent->SetRelativeTransform(CameraTransform);
-		//NewCameraComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
-		// Add to lists
-		AllCameras.Add(NewCameraComponent);
-		Transforms.Add(CameraTransform);
+		UCameraComponent* NewCameraComponent = NewObject<UCameraComponent>(this, UCameraComponent::StaticClass(), *FString("Camera " + (i + 1)));
+		if (NewCameraComponent)
+		{
+			NewCameraComponent->RegisterComponent();
+			NewCameraComponent->SetRelativeTransform(CameraTransform);
+			NewCameraComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+			// Add to lists
+			AllCameras.Add(NewCameraComponent);
+			Transforms.Add(CameraTransform);
+		}
 	}
 }
 

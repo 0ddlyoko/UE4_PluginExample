@@ -23,13 +23,13 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "1", ClampMax = "16"))
-	int CameraNumber;
+	int CameraNumber = 4;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int Height;
+	int Height = 800;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int Width;
+	int Width = 800;
 
 	// Change the current camera specific player is
 	UFUNCTION(BlueprintCallable)
